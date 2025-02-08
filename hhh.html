@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư Từ Người Ẩn Danh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .letter, .error-message {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nhập Ngày Tháng Năm Sinh</h1>
+  <input type="date" id="birthdate">
+  <button onclick="checkDate()">Xem Thư</button>
+  
+  <div id="letter" class="hidden letter">
+    <h2>Thư Từ Người Ẩn Danh</h2>
+    <p>m có người yêu chưa? Có người thích mày và nhờ t gửi thư đến m. Có gợi ý là người này rất quen.</p>
+  </div>
+  
+  <div id="error-message" class="hidden error-message">
+    <p>Có thể không phải thư dành cho bạn. Hãy thử lại, ví dụ như ngày tháng không cần số 0 ở trước hoặc có số 0 ở trước!</p>
+  </div>
+
+  <script>
+    function checkDate() {
+      const inputDate = document.getElementById('birthdate').value;
+      const correctDates = ["2010-09-06", "2010-9-6", "2010-09-6", "2010-9-06"]; // Các trường hợp đúng
+
+      if (correctDates.includes(inputDate)) {
+        document.getElementById('letter').classList.remove('hidden');
+        document.getElementById('error-message').classList.add('hidden');
+      } else {
+        document.getElementById('letter').classList.add('hidden');
+        document.getElementById('error-message').classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
